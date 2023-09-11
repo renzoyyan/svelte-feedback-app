@@ -4,6 +4,7 @@
   import RatingSelect from './RatingSelect.svelte';
   import Button from './ui/Button.svelte';
   import Card from './ui/Card.svelte';
+  import { FeedbackStore } from '../stores';
 
   let text = '';
   let rating = 10;
@@ -24,6 +25,7 @@
   };
 
   const handleRatingSelect = e => (rating = e.detail);
+
   const handleSubmit = () => {
     if (text.trim().length <= min) return;
 
@@ -33,8 +35,7 @@
       rating: +rating,
     };
 
-    dispatch('add-feedback', newFeedback);
-
+    FeedbackStore.update(currentFeedback => [newFeedback, ...currentFeedback]);
     text = '';
     btnDisabled = true;
   };

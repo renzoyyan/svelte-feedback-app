@@ -34,6 +34,7 @@
     justify-content: space-around;
     flex-wrap: wrap;
     row-gap: 1rem;
+    column-gap: 0.5rem;
     margin: 30px 0;
   }
 

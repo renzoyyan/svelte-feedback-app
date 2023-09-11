@@ -1,6 +1,9 @@
 <script>
-  export let count = 0;
-  export let average = 0;
+  import { FeedbackStore } from '../stores';
+
+  // $ -> is reactivity, it is more likely a useState
+  $: count = $FeedbackStore.length;
+  $: average = $FeedbackStore.reduce((total, curr) => total + curr.rating, 0) / count;
 </script>
 
 <div class="feedback-stats">
